@@ -6,6 +6,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+
+import java.net.URI;
 
 import javax.validation.Valid;
 
@@ -20,9 +23,9 @@ public class TurmaController {
     public ResponseEntity<Turma> cadastro(@RequestBody @Valid TurmaRequest request){
 
         Turma turma = request.converte();
-
         turmaRepository.save(turma);
+        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").build().toUri();
 
-        return ResponseEntity.ok(turma);
+        return ResponseEntity.created(uri).build();
     }
 }

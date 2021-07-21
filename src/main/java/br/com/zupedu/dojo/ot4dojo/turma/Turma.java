@@ -1,5 +1,7 @@
 package br.com.zupedu.dojo.ot4dojo.turma;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.time.LocalDate;
 
 import javax.persistence.Column;
@@ -17,7 +19,7 @@ public class Turma {
 	
 	@Column(unique = true)
 	private String nome;
-	
+
 	private LocalDate iniciaEm;
 	
 	private LocalDate terminaEm;

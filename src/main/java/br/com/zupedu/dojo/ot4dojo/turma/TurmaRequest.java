@@ -16,10 +16,12 @@ public class TurmaRequest {
 	
 	@Size(max = 50)
 	@NotBlank
+	//Campo único.
 	private String nome;
 	
 	@FutureOrPresent
 	@NotNull
+	//Datas de início não podem ser iguais
 	private LocalDate iniciaEm;
 	
 	@Future
@@ -31,9 +33,10 @@ public class TurmaRequest {
 		this.iniciaEm = iniciaEm;
 		this.nome = nome;
 	}
-	
-	
-	
-	
-	
+
+
+	public Turma converte() {
+
+		return new Turma(terminaEm, iniciaEm, nome);
+	}
 }
